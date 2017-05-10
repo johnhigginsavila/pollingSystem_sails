@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>Poll Id: <%= poll.id %> </h1>
+  <h2>Created By: <%= poll.user.firstname %></h2>
+  <hr>
+  <div class="col-lg-offset-2 col-lg-8">
+    <h1><%= poll.pollQuestion %></h1>
+    <table class="table table-fluid">
+      <% for(var i = 0; i < poll.pollAnswer.length; i++){ %>
+        <tr>
+          <td><h4><%= poll.pollAnswer[i].answer %></h4></td>
+          <td>
+            <% if(poll.isVoted == false){ %>
+              <form action="/vote/create" method="POST">
+                <input type="hidden" name="poll"  value="<%= poll.id %>">
+                <input type="hidden" name="pollAnswer" value="<%= poll.pollAnswer[i].id %>">
+                <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                <h4><button type="submit" class="btn btn-primary">Vote</button></h4>
+              </form>
+            <% }else { %>
+              <h4><button class="btn btin-primary disabled">Vote</button></h4>
+            <% } %>
+          </td>
+          <td>
+            <h4>Votes: <%= poll.pollAnswer[i].result%></h4>
+          </td>
+        </tr>
+      <% } %>
+    </table>
+  </div>
+</div>

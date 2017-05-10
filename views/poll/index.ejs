@@ -1,0 +1,17 @@
+<div class="container">
+	<h1>My Polls</h1>
+	<hr>
+	<!--<div class="col-lg-6">
+		<a href="#" class="btn btn-info btn-lg btn-block">What is the best Programming Language?</a>
+	</div>-->
+    <% _.each(polls, function(poll){ %>
+      <div class="col-lg-6">
+		<a href="/poll/show/<%= poll.id %>" class="btn btn-info btn-lg btn-block"><h3><%= poll.pollQuestion %></h3><p>Poll Created by: <%= poll.user.firstname %></p></a>
+      </div>
+    <% }) %>
+  
+  
+	<div class="pull-right">
+		<a href="/poll/new" class="btn btn-primary btn-lg">Add Poll</a>
+	</div>
+</div>

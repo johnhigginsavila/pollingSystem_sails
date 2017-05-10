@@ -34,8 +34,40 @@ module.exports.routes = {
 
   '/': {
     view: 'static/index'
-  }
-
+  },
+  '/user':{
+    controller:'UserController',
+    action: 'index'
+  },
+  '/user/new':{
+    controller: 'UserController',
+    action: 'new'
+  },
+  '/user/create':{
+    controller: 'UserController',
+    action: 'create'
+  },
+	'/user/edit':{
+		controller: 'UserController',
+		action: 'edit'
+	},
+	'/poll':{
+		controller: 'PollController',
+		action: 'index'
+	},
+	'/poll/new':{
+		controller: 'PollController',
+		action: 'new'
+	},
+	'/poll/create':{
+		controller: 'PollController',
+		action: 'create'
+	},
+	'/vote':{
+		controller: 'VoteController',
+		action: 'index'
+	}
+		
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

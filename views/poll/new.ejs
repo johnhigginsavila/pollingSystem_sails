@@ -1,0 +1,42 @@
+<main class="container">
+  <form class="form-horizontal form-signin" id="sign-up-form" action="/poll/create" method="POST">
+    <fieldset class="container-fluid col-lg-8 col-lg-offset-2">
+      <legend>Add A Poll</legend>
+      <% if(flash && flash.err) { %>
+          <ul class="alert alert-success">
+      <% Object.keys(flash.err).forEach(function(error){ %>
+            <li><%- JSON.stringify(flash.err[error]) %> </li>	
+      <% })	%>
+          </ul>
+      <% } %>
+      <section class="form-group">
+        <div class="">
+          <input type="text" class="form-control" placeholder="Poll Question" name="pollquestion" id="pollquestion">
+        </div>
+      </section>
+      <section class="form-group">
+        <div>
+          <input type="text" class="form-control" placeholder="answer1" name="answer[0]" id="answer1">
+        </div>
+      </section>
+      <section class="form-group">
+        <div class="">
+          <input type="text" class="form-control" placeholder="answer2" name="answer[1]" id="answer2">
+        </div>
+      </section>
+			<span id="3"></span>
+      <div class="form-group">
+				<div>
+					<button type="button" class="btn btn-primary" id="addPollAnswer">Add Poll Answer</button>
+				</div>
+			</div>
+      <div class="form-group">
+        <div class="col-lg-offset-6">
+          <button type="reset" class="btn btn-default">Cancel</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <input type="hidden" name="_csrf" value="<%= _csrf %>">
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</main>

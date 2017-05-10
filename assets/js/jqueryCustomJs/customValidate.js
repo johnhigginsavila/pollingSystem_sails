@@ -21,7 +21,7 @@ $(document).ready(function(){
 				confirmation:{
 					minlength:4,
 					required: true,
-					equalTo: '#password'
+					equalTo: '#mypassword'
 				}
 			},
 			success: function(element){

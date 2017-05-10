@@ -27,9 +27,14 @@ module.exports.policies = {
   ***************************************************************************/
 
    '*': 'flash',
-  user:{
-    'new':'flash'
-  }
+    '/user':'admin',
+    '/user/show':'userCanSeeProfile',
+    '/user/new':'flash',
+    '/user/create':'flash',
+    '/user/*':'userCanSeeProfile',
+    '/poll':'userCanSeeProfile',
+    '/poll/*':'userCanSeeProfile',
+    '/vote':'userCanSeeProfile'
 
   /***************************************************************************
   *                                                                          *

@@ -19,10 +19,50 @@ module.exports = {
       type: 'string'
     },
     firstname:{
-      type: 'string'
+      type: 'string',
+			required: true
     },
     lastname:{
-      type: 'string'
+      type: 'string',
+			required: true
+    },
+    admin:{
+      type:'boolean',
+      defaultsTo: false
+    },
+    online:{
+      type: 'boolean',
+      defaultsTo: false
+    },
+		poll:{
+			collection:'poll',
+			via: 'user'
+		},
+		vote:{
+			collection: 'vote',
+			via: 'user'
+		}
+  },
+  toJSON: function(){
+      var obj = this.toObject();
+      delete obj.password;
+      delete obj.confirmation;
+      delete obj.confirmation;
+      delete obj.encryptedPassword;
+      delete obj._csrf;
+      return obj;
+  },
+	beforeValidate: function(values, next){
+    console.log(values);
+    if(typeof values.admin !== 'undefined'){
+      if(values.admin === 'unchecked'){
+        values.admin = false;
+      }else if (values.admin[1] === 'on'){
+        values.admin = true;
+      }
+      next();
+    }else{
+      next();
     }
   },
   beforeCreate: function(values, next){
