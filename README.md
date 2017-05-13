@@ -1,5 +1,5 @@
 # pollingSystem_sails
-
+author: John Higgins M. Avila
 a [Sails](http://sailsjs.org) application
 
 #Getting started:
